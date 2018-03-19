@@ -1,0 +1,7 @@
+---
+
+- hosts: boot
+  remote_user: root
+  roles:
+    - boot
+    
