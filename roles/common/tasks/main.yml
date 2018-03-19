@@ -1,5 +1,9 @@
 ---
 
+- name: Base install
+  remote_user: root
+  import_tasks: base_install.yml
+
 - name: Add repos
   remote_user: root
   import_tasks: add_repos.yml
@@ -8,6 +12,3 @@
   remote_user: root
   import_tasks: upgrade.yml
 
-- name: Install
-  remote_user: root
-  import_tasks: install.yml
