@@ -1,0 +1,101 @@
+{
+    "name": "${environmentName}",
+    "description": "Blockchain in a Box mk. II",
+    "version": "0.0.1",
+    "author": "https://github.com/lbthomsen",
+    "ssh-key": "lth", 
+    "containers": [
+        {
+            "hostname": "desktop",
+            "template": "debian-stretch",
+            "peer-criteria": "BIAB-GROUP",
+            "size": "LARGE"
+        }, 
+        {
+            "hostname": "boot",
+            "template": "debian-stretch",
+            "peer-criteria": "BIAB-GROUP",
+            "size": "SMALL"
+        }, 
+        {
+            "hostname": "geth0",
+            "template": "debian-stretch",
+            "peer-criteria": "BIAB-GROUP",
+            "size": "SMALL"
+        }, 
+        {
+            "hostname": "geth1",
+            "template": "debian-stretch",
+            "peer-criteria": "BIAB-GROUP",
+            "size": "SMALL"
+        }, 
+        {
+            "hostname": "geth2",
+            "template": "debian-stretch",
+            "peer-criteria": "BIAB-GROUP",
+            "size": "SMALL"
+        }
+    ],
+    "peer-criteria": [
+        {
+            "name": "BIAB-GROUP",
+            "max-price": "25"
+        }
+    ],
+    "ansible-configuration": {
+        "source-url": "https://github.com/lbthomsen/subutai-blueprint-biab2/archive/master.zip",
+        "ansible-playbook": "site.yml",
+        "extra-vars": [
+            {
+                "key": "ethereum_network_id", 
+                "value": "${ethereumNetworkId}"
+            }, 
+            {
+                "key": "ethereum_password", 
+                "value": "${ethereumPassword}"
+            }
+        ], 
+        "groups": [
+            {
+                "name": "desktop",
+                "hostnames": [
+                    "desktop"
+                ]
+            }, 
+            {
+                "name": "boot",
+                "hostnames": [
+                    "boot"
+                ]
+            }, 
+            {
+                "name": "geth",
+                "hostnames": [
+                    "geth0", 
+                    "geth1", 
+                    "geth2"
+                ]
+            }
+        ]
+    },
+    "user-variables": {
+        "environmentName": {
+            "description": "Enter the environment name",
+            "type": "string",
+            "default": "mist",
+            "validation": "[a-zA-Z0-9]+"
+        },
+        "ethereumNetworkId": {
+            "description": "Enter private blockchain ID (if network = private!)",
+            "type": "string",
+            "default": "",
+            "validation": "[0-9]+"
+        },
+        "ethereumPassword": {
+            "description": "Enter private blockchail account password",
+            "type": "string",
+            "default": "somethingrather",
+            "validation": "[a-zA-Z0-9]+"
+        }
+    }
+}

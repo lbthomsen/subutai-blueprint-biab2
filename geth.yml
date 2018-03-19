@@ -1,0 +1,7 @@
+---
+
+- hosts: geth
+  remote_user: root
+  roles:
+    - geth
+    
