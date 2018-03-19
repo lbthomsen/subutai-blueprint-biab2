@@ -1,0 +1,13 @@
+---
+
+- name: Add repos
+  remote_user: root
+  import_tasks: add_repos.yml
+
+- name: Upgrade
+  remote_user: root
+  import_tasks: upgrade.yml
+
+- name: Install
+  remote_user: root
+  import_tasks: install.yml

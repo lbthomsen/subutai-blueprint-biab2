@@ -1,0 +1,3 @@
+deb http://ppa.launchpad.net/ethereum/ethereum/ubuntu artful main
+deb http://ppa.launchpad.net/ethereum/ethereum/ubuntu xenial main
+deb http://ppa.launchpad.net/ethereum/ethereum/ubuntu wily main

@@ -1,0 +1,15 @@
+---
+
+- name: "Add ethereum key"
+  apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: 1C52189C923F6CA9
+
+- name: "Add ethereum repo"
+  apt_repository:
+    repo: "deb http://ppa.launchpad.net/ethereum/ethereum/ubuntu artful main"
+    state: present
+
+- name: "Install ethereum"
+  apt:
+    name: ethereum
